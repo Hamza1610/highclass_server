@@ -4,43 +4,43 @@ const nodemailer = require('nodemailer');
 
 const app = express();
 
-app.listen(4000, () => console.log('Server runnign on port 4000! '))
-
-// PUSH request for Sign in
-app.get('/signin', (req, res) => {
-	console.log('GET request placed');
+// POST request for Sign in
+app.post('/signin', (req, res) => {
+	console.log(req);
 });
 
-// PUSH request for Log in
-app.get('/login', (req, res) => {
-        console.log('GET request placed');
+// POST request for Log in
+app.post('/login', (req, res) => {
+        console.log(req);
 });
 
-// PUSH request for registering courses 
-app.get('/register-courses', (req, res) => {
-        console.log(res);
+// POST request for registering courses 
+app.post('/register-courses', (req, res) => {
+        console.log(req);
 });
 
-// PUSH request for study timetable
-app.get('/register-timetable', (req, res) => {
-        console.log('GET request placed');
+// POST request for study timetable
+app.post('/register-timetable', (req, res) => {
+        console.log(req);
 });
 // GET request for Landing page/Home
 app.get('/', (req, res) => {
-	        console.log('GET request placed');
+	console.log(req);
 });
 
 // GET request for Collaborative Learning
 app.get('/collaborative-learning', (req, res) => {
-        console.log('GET request placed');
+        console.log(req);
 });
 
 // GET request for Quiz and Rewards
 app.get('/quiz-and-reward', (req, res) => {
-        console.log('GET request placed');
+        console.log(req);
 });
 
 // GET request for Reading scheduler
 app.get('/reading-scheduler', (req, res) => {
-        console.log('GET request placed');
+        console.log(req);
 });
+
+app.listen(4000, () => console.log('Server runnign on port 4000! '));
