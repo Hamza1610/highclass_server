@@ -20,5 +20,5 @@ const StudentRecordSchema = new Schema({
     },
 }, { timestamps: true });
 
-const StudentRecord = mongoose.model('StudentRecord', StudentRecordSchema);
+const StudentRecord = mongoose.model('Students record', StudentRecordSchema);
 module.exports = StudentRecord;
