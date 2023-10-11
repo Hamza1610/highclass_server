@@ -1,4 +1,4 @@
-const mongoose = requireI('mongoose');
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 const TestQuestionSchema = new Schema({
@@ -7,7 +7,7 @@ const TestQuestionSchema = new Schema({
         required: true,
     },
     Options: {
-        type: String,,
+        type: String,
         required: true,
     },
     Answer: {
