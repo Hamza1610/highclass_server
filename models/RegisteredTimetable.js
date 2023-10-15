@@ -6,34 +6,13 @@ const RegisteredTimetableSchema = new Schema({
         type: String,
         required: true,
     },
-    Monday: {
-        type: String,
-        required: true,
-    },
-    Tuesday: {
-        type: String,
-        required: true,
-    },
-    Wednessday: {
-        type: String,
-        required: true,
-    },
-    Thusday: {
-        type: String,
-        required: true,
-    },
-    Friday: {
-        type: String,
-        required: true,
-    },
-    Saturday: {
-        type: String,
-        required: true,
-    },
-    Sunday: {
-        type: String,
-        required: true,
-    },
+    Monday: [{ from: String, to: String }],
+    Tuesday: [{ from: String, to: String }],
+    Wednessday: [{ from: String, to: String }],
+    Thusday: [{ from: String, to: String }],
+    Friday: [{ from: String, to: String }],
+    Saturday: [{ from: String, to: String }],
+    Sunday: [{ from: String, to: String }],
 }, { timestamps: true });
 
 const RegisteredTimetable = mongoose.model('Study timetable', RegisteredTimetableSchema);
