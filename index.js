@@ -96,16 +96,7 @@ app.post('/time-reg', (req, res) => {
                                 console.log(error);
                         }) 
                 })
-                .catch((err) => { console.log(err); })       
-        
-        // const formData = new RegisteredTimetable(req.body);
-        // formData.save()
-        // .then((result) => {
-        //         res.json(result);
-        // }).catch((err) => {
-        //         res.json({'error': err })
-        //         console.log(err);
-        // });
+                .catch((err) => { console.log(err); })
     
 });
 
