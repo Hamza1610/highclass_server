@@ -10,7 +10,7 @@ const StudentRecordSchema = new Schema({
         type: String,
         required: true,
     },
-        RegistionNum: {
+    RegistrationNum: {
         type: String,
         required: true,
     },
