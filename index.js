@@ -24,8 +24,32 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // APIs
+app.get('/', (req, res)=> {
+        console.log('API reached');
+        res.json({ log : 'Hello logged'})
+})
 app.post('/sign-up', (req, res) => {
-        // Need to structure req.body
+        // setting reg number to timetable collection
+        console.log(req.body.reg_num)
+        const regSetter = new RegisteredTimetable({ 
+                'RegistionNum': req.body.RegistrationNum,
+                'Monday': [],
+                'Tuesday': [],
+                'Wednessday': [],
+                'Thusday': [],
+                'Friday': [],
+                'Saturday': [],
+                'Sunday': [],
+        })
+        regSetter.save()
+        .then((result) => {
+                console.log(result);
+        })
+        .catch((error) => {
+                console.log(error);
+        })
+
+        console.log(req.body);
         const formData = new StudentRecords(req.body);
         formData.save()
         .then((result) => {
@@ -36,7 +60,7 @@ app.post('/sign-up', (req, res) => {
         });
 });
 app.post('/course-reg', (req, res) => {
-        // Need to structure req.body
+        console.log(req.body);
         const formData = new RegisteredCourses(req.body);
         formData.save()
         .then((result) => {
@@ -48,19 +72,45 @@ app.post('/course-reg', (req, res) => {
 });
 
 app.post('/time-reg', (req, res) => {
-        // Need to structure req.body
-        const formData = new RegisteredTimetable(req.body);
-        formData.save()
-        .then((result) => {
-                res.json(result);
-        }).catch((err) => {
-                res.json({'error': err })
-                console.log(err);
-        });
+
+        console.log(req.body);
+        const reg_num = req.body.reg_num
+        const day = req.body.day
+        const from = req.body.from
+        const to = req.body.to
+        console.log(reg_num, day, from, to);
+        // coming to check this
+        RegisteredTimetable.findOne({ RegistionNum: reg_num })
+                .then((result) => { 
+                        console.log(result);
+                        if (result) {
+                                result[day].push({ 'from': from, 'to': to })
+                        }           
+                        result.save() 
+                        .then((result) => {
+                                res.json(result);
+                                console.log(result);
+                        })
+                        .catch((error) => {
+                                res.json(error);
+                                console.log(error);
+                        }) 
+                })
+                .catch((err) => { console.log(err); })       
+        
+        // const formData = new RegisteredTimetable(req.body);
+        // formData.save()
+        // .then((result) => {
+        //         res.json(result);
+        // }).catch((err) => {
+        //         res.json({'error': err })
+        //         console.log(err);
+        // });
     
 });
 
 app.post('/edit-time', (req, res) => {
+        console.log(req.body);
         // Need to structure req.body
         RegisteredTimetable.findByIdAndUpdate(req.body)
         .then((result) => {
