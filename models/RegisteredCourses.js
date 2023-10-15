@@ -7,9 +7,10 @@ const RegisteredCoursesSchema = new Schema({
         required: true,
     },
     Courses: {
-        type: String,
-        required: true,
+        type: Array,
+        require: true,
     },
+
 }, { timestamps: true });
 
 const RegisteredCourses = mongoose.model('Courses registered', RegisteredCoursesSchema);
